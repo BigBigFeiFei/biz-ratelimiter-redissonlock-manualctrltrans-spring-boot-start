@@ -95,9 +95,9 @@
         </dependency>
         <!--starter依赖必须有-->
         <dependency>
-            <groupId>com.zlf</groupId>
+            <groupId>io.github.bigbigfeifei</groupId>
             <artifactId>biz-ratelimiter-redissonlock-manualctrltrans-spring-boot-start</artifactId>
-            <version>1.0</version>  
+            <version>1.0</version> 
         </dependency>
         <!--必须有-->
         <dependency>
