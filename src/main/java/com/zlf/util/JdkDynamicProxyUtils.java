@@ -19,7 +19,7 @@ public class JdkDynamicProxyUtils {
      * @return
      */
     public static <T> T createLimiterProxyInstance(Class targetInterfaceClazz, MyLimitInvocationHandler myLimitInvocationHandler) {
-        String key = targetInterfaceClazz + "-" + KEY_SUFFIX;
+        String key = targetInterfaceClazz.getSimpleName() + "-" + KEY_SUFFIX;
         Object obj = limiterProxyInstanceMap.get(key);
         if (Objects.nonNull(obj)) {
             return (T) obj;

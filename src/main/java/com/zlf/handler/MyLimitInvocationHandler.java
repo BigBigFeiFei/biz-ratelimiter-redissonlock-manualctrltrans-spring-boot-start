@@ -65,9 +65,9 @@ public class MyLimitInvocationHandler implements InvocationHandler {
             //限流的 key
             rule2.setKey(limiterParams.getTimeWindowKey());
             //限流的速率
-            rule2.setRate(1);
+            rule2.setRate(limiterParams.getRate());
             //时间窗口大小，单位为秒
-            rule2.setRateInterval(3);
+            rule2.setRateInterval(limiterParams.getRateInterval());
             Result result2 = limiterService.isAllowed(rule2);
             //如果允许访问
             if (result2.isAllow()) {

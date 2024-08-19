@@ -25,7 +25,7 @@ public class BizRateLimiterService {
 
     public Boolean enabled(Integer index) {
         LimitProperties limitProperties = this.getLimitProperties(index);
-        return limitProperties.getEnabled();
+        return Objects.nonNull(limitProperties) ? limitProperties.getEnabled() : Boolean.FALSE;
     }
 
     public Object getBizRateLimiterProxy(Integer index, Object target, Class targetInterfaceClazz, String timeWindowKey) {
@@ -55,6 +55,8 @@ public class BizRateLimiterService {
         limiterParams.setRequestedTokens(limitProperties.getRequestedTokens());
         limiterParams.setTokenBucketKey(limitProperties.getInterfaceName() + "-" + limitProperties.getMethodName());
         limiterParams.setTimeWindowKey(timeWindowKey);
+        limiterParams.setRate(limitProperties.getRate());
+        limiterParams.setRateInterval(limitProperties.getRateInterval());
 
         MyLimitInvocationHandler myLimitInvocationHandler = (MyLimitInvocationHandler) BizRateLimiterSpringUtils.getBean(BizRateLimiterConstants.MyLimitInvocationHandler_BEAN_NAME_PREFIX + index);
         myLimitInvocationHandler.setLimiterParams(limiterParams);

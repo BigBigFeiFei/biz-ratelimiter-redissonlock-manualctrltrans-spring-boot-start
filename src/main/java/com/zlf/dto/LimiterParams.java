@@ -30,4 +30,14 @@ public class LimiterParams {
      */
     private String timeWindowKey;
 
+    /**
+     * 限流的速率 默认是1
+     */
+    private Integer rate = 1;
+
+    /**
+     * 时间窗口大小，单位为秒  默认是3s
+     */
+    private Integer rateInterval = 3;
+
 }
