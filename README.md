@@ -190,9 +190,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   #redis配置,redis连接池使用默认的lettuce连接池
   redis:
-    host: 10.0.40.13
-    port: 6389
-    password: 12345678
+    host: ip
+    port: port
+    password: xxx
     database: 6
     lettuce:
       pool:
