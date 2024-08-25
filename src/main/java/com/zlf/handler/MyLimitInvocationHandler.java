@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 @Slf4j
@@ -72,8 +73,14 @@ public class MyLimitInvocationHandler implements InvocationHandler {
             //如果允许访问
             if (result2.isAllow()) {
                 // 利用目标类实例执行原有的逻辑
-                Object result = method.invoke(target, args);
-                return result;
+                try {
+                    Object result = method.invoke(target, args);
+                    return result;
+                } catch (InvocationTargetException e) {
+                    Throwable t = e.getTargetException();
+                    log.error("MyLimitInvocationHandler接口异常:{}", t.getMessage());
+                    throw new RuntimeException(t.getMessage());
+                }
             } else {
                 //触发限流
                 throw new RuntimeException("您手速太快了,请慢点操作哈!");
