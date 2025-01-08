@@ -6,7 +6,7 @@
 
     <groupId>io.github.bigbigfeifei</groupId>
     <artifactId>biz-ratelimiter-redissonlock-manualctrltrans-spring-boot-start</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
     <!--描述一定要有-->
     <description>biz-ratelimiter-redissonlock-manualctrltrans-spring-boot-start启动器</description>
 

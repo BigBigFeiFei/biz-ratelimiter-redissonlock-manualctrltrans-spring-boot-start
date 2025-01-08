@@ -1,6 +1,7 @@
 package com.zlf.annotation;
 
 import cn.hutool.core.lang.Tuple;
+import com.zlf.config.RedissonLockAutoConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +37,7 @@ public class BizIdempotentManualCtrlTransAspect {
     @Autowired
     private DataSourceTransactionManager transactionManager;
 
-    @Autowired
+    @Resource(name = RedissonLockAutoConfiguration.REDISSON_LOCK_BEAN_NAME)
     private RedissonClient redissonClient;
 
     @Autowired

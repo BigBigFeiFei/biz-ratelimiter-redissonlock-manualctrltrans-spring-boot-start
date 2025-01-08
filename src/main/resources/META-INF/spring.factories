@@ -2,4 +2,5 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.zlf.config.LimitConfig,\
   com.zlf.config.RedissonLockProperties,\
   com.zlf.config.RedisTemplateConfig,\
-  com.zlf.annotation.BizIdempotentManualCtrlTransAspect
+  com.zlf.annotation.BizIdempotentManualCtrlTransAspect,\
+  com.zlf.config.RedissonLockAutoConfiguration
