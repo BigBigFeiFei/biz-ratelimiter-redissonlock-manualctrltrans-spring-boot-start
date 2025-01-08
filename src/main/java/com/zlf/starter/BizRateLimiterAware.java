@@ -1,5 +1,6 @@
 package com.zlf.starter;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.alibaba.fastjson.JSON;
 import com.taptap.ratelimiter.core.RateLimiterService;
 import com.zlf.config.LimitConfig;
@@ -45,6 +46,9 @@ public class BizRateLimiterAware implements ApplicationContextAware, Environment
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         List<LimitProperties> lps = limitConfig.getLps();
         log.info("===========BizRateLimiterAware.lps:{}=============", JSON.toJSONString(lps));
+        if (CollectionUtil.isEmpty(lps)) {
+            return;
+        }
         for (int i = 0; i < lps.size(); i++) {
             if (StringUtils.isBlank(lps.get(i).getInterfaceName())) {
                 throw new RuntimeException("BizRateLimiterAware.第{" + i + "}个LimitProperties的interfaceName不为空!");
